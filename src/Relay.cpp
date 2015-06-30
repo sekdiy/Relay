@@ -5,12 +5,12 @@
  * @date 18.06.2015
  * @version 1
  */
- 
+
 // Compatibility with the Arduino 1.0 library standard
-#if defined(ARDUINO) && ARDUINO >= 100  
-#include "Arduino.h"  
-#else  
-#include "WProgram.h"   
+#if defined(ARDUINO) && ARDUINO >= 100
+#include "Arduino.h"
+#else
+#include "WProgram.h"
 #endif
 
 #include "Relay.h"
@@ -22,10 +22,8 @@
  *
  * @version 1
  */
-Relay::Relay(int pin, int state, int mode)
+Relay::Relay(int pin, int state, int mode) : _pin(pin), _mode(mode)
 {
-  this->_mode = mode;              // assign mode
-  this->_pin = pin;                // assign pin number
   pinMode(pin, OUTPUT);      // set mode to output
 
   setState(HIGH == state ? HIGH : LOW); // set and update relay state
@@ -36,7 +34,7 @@ Relay::Relay(int pin, int state, int mode)
  *
  * @version 1
  */
-void Relay::on(void) 
+void Relay::on(void)
 {
   setState(HIGH);
 }
@@ -79,7 +77,7 @@ int Relay::getState(void)
  */
 void Relay::setState(int state) {
   this->_state = state;
-  digitalWrite(this->_pin, (this->_mode ? this->_state : !this->_state)); 
+  digitalWrite(this->_pin, (this->_mode ? this->_state : !this->_state));
 }
 
 /*
