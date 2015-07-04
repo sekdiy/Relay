@@ -21,7 +21,8 @@ void loop() {
 
   // wait a sec
   delay(1000);
-}```
+}
+```
 
 In the above example, a **Relay** object `Lamp` is assumed.
 This `Lamp` is toggled every second. Additionally the current state is printed, according to the internal state of the `Lamp` object.
@@ -75,4 +76,4 @@ Alternatively, you can use Arduino's `Add .ZIP Library...` menu option.
 
 For further documentation please take a look at the examples and into the source code .
 
-The files [Relay.h](examples/Relay/Relay.h) and [Relay.cpp](examples/Relay/Relay.cpp) are documented and contain additional clues that may help to understand the functionality.
+The files [Relay.h](src/Relay.h) and [Relay.cpp](src/Relay.cpp) are documented and contain additional clues that may help to understand the functionality.
