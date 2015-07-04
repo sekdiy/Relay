@@ -1,9 +1,7 @@
-/**
+/*
  * Relay library
  *
- * @author sekdiy
- * @date 18.06.2015
- * @version 1
+ * Author: sekdiy (https://github.com/sekdiy/Relay)
  */
 
 // Compatibility with the Arduino 1.0 library standard
@@ -15,88 +13,49 @@
 
 #include "Relay.h"
 
-/**
- * Relay constructor
- *
- * default: active low, off
- *
- * @version 1
- */
-Relay::Relay(int pin, int state, int mode) : _pin(pin), _mode(mode)
+Relay::Relay(unsigned int pin, unsigned int state, unsigned int mode) :
+  _pin(pin),                                                       //!< store pin number
+  _mode(HIGH == mode ? HIGH : LOW)                                 //!< store logic mode (high- or low-active)
 {
-  pinMode(pin, OUTPUT);      // set mode to output
-
-  setState(HIGH == state ? HIGH : LOW); // set and update relay state
+  pinMode(pin, OUTPUT);                                            //!< set port pin to be an output
+  this->setState(state);                                           //!< set state
 }
 
-/*
- * Turn relay on
- *
- * @version 1
- */
 void Relay::on(void)
 {
-  setState(HIGH);
+  this->setState(ON);                                              //!< explicitly set to ON
 }
 
-/*
- * Turn relay off
- *
- * @version 1
- */
 void Relay::off(void)
 {
-  setState(LOW);
+  this->setState(OFF);                                             //!< explicitly set to OFF
 }
 
-/*
- * Toggle relay state
- *
- * @version 1
- */
 void Relay::toggle(void)
 {
-  setState(1 ^ getState());
+  this->setState(HIGH ^ this->_state);                             //!< invert the state
 }
 
-/*
- * Get relay state (LOW/HIGH)
- *
- * @version 1
- * @return int
- */
-int Relay::getState(void)
+unsigned int Relay::getState(void)
 {
-  return this->_state;
+  return this->_state;                                             //!< get stored state
 }
 
-/*
- * Set relay state (LOW/HIGH)
- *
- * @version 1
- */
-void Relay::setState(int state) {
-  this->_state = state;
-  digitalWrite(this->_pin, (this->_mode ? this->_state : !this->_state));
+void Relay::setState(unsigned int state)
+{
+  if (this->_state != state) {                                     //!< check for actual state change
+    this->_state = (OFF == state ? OFF : ON);                      //!< store new state, explicitly 'casting' to ON or OFF
+    digitalWrite(this->_pin, (HIGH ^ this->_mode) ^ this->_state); //!< apply logic mode and set pin state
+  }
 }
 
-/*
- * Returns TRUE iff the relay is on
- *
- * @version 1
- */
 boolean Relay::isOn(void)
 {
-  return (HIGH == getState());
+  return (ON == this->getState());                                 //!< is the state ON?
 }
 
-/*
- * Returns TRUE iff the relay is off
- *
- * @version 1
- */
 boolean Relay::isOff(void)
 {
-  return (LOW == getState());
+  return (OFF == this->getState());                                //!< is the state OFF?
 }
 
