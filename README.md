@@ -1,4 +1,4 @@
-# Relay
+# Sekdiy Relay Library [![Build Status](https://travis-ci.org/sekdiy/Relay.svg?branch=master)](https://travis-ci.org/sekdiy/Relay)
 
 ## Purpose ##
 
@@ -66,11 +66,17 @@ Take a look at the [**RelayModule**](examples/RelayModule/RelayModule.ino) examp
 
 ## Installation ##
 
+#### Download
+
 Just check out the [**Relay**](https://github.com/sekdiy/Relay) Repository on GitHub (or download the ZIP archive) and copy it to your `libraries/` folder (usually within your Arduino sketchbook).
 
 After (re)launching the Arduino IDE, **Relay** will appear in your Sketchbook/Examples menu.
 
+#### Arduino Library Manager
+
 Alternatively, you can use Arduino's `Add .ZIP Library...` menu option.
+
+Please see the [libraries guide](http://www.arduino.cc/en/Guide/Libraries#toc3) for further instructions.
 
 ## Documentation ##
 
