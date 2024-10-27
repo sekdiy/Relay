@@ -1,4 +1,4 @@
-# Sekdiy Relay Library [![Build Status](https://travis-ci.org/sekdiy/Relay.svg?branch=master)](https://travis-ci.org/sekdiy/Relay)
+# Arduino Relay Library
 
 ## Purpose ##
 
