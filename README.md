@@ -1,4 +1,4 @@
-# Arduino Relay Library
+# Arduino Relay Library [![Version 1.1](https://img.shields.io/badge/Relay-1.1-blue.svg 'Version 1.1')](https://github.com/sekdiy/Relay)
 
 ## Purpose ##
 
